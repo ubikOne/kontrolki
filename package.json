@@ -1,0 +1,23 @@
+{
+  "name": "kontrolki",
+  "version": "0.0.2",
+  "description": "siple app to checking system information",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ubikOne/kontrolki.git"
+  },
+  "author": "Bartek 'ubikOne' Błażejewski",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ubikOne/kontrolki/issues"
+  },
+  "homepage": "https://github.com/ubikOne/kontrolki#readme",
+  "devDependencies": {
+    "electron": "^1.7.9",
+    "systeminformation": "^3.33.7",
+    "tsc": "^1.20150623.0"
+}
