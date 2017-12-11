@@ -57,6 +57,16 @@ body .container .container-stats .container-stats-items {
   box-sizing: border-box;
 }
 
+body .container .container-stats .container-stats-items > canvas {
+  width: 100%;
+  height: 100%;
+}
+
+body .container .container-stats .container-stats-items > h1 {
+  position: fixed;
+  z-index: 100;
+}
+
 body .container .container-column {
   display: flex;
   flex-wrap: wrap;

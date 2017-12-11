@@ -1,5 +1,5 @@
-var buttonsName = [
-    [
+var buttonsName = {
+    eng: [
         "Processor",
         "Mother Board",
         "Ram",
@@ -13,7 +13,7 @@ var buttonsName = [
         "Reset",
         "Save"
     ],
-    [
+    pl: [
         "Procesor",
         "Płyta Główna",
         "Pamięć",
@@ -23,11 +23,11 @@ var buttonsName = [
         "Użytkownicy",
         "SO",
         "Wszystko",
-        "Stats",
+        "Użycie",
         "Wyczyść",
         "Zapisz"
     ]
-];
+};
 var buttonsId = [
     "cpu",
     "mobo",

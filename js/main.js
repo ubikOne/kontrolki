@@ -7,11 +7,19 @@ window.onload = function () {
     valueShow();
     transfer();
 };
+var lang = true;
+var language;
 function buttons() {
-    var j = 1;
+    lang = false;
+    if (lang) {
+        language = buttonsName.eng;
+    }
+    else {
+        language = buttonsName.pl;
+    }
     utils.append.div("buttons", "buttons", "container", "");
-    for (var i_1 = 0; i_1 < buttonsId.length; i_1++) {
-        utils.append.div(buttonsId[i_1], "btn", "buttons", buttonsName[j][i_1]);
+    for (var i_1 in buttonsId) {
+        utils.append.div(buttonsId[i_1], "btn", "buttons", language[i_1]);
     }
 }
 function time() {

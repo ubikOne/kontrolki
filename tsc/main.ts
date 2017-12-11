@@ -8,11 +8,19 @@ window.onload = (): void => {
   transfer();
 }
 
+let lang: boolean = true;
+let language: any;
+
 function buttons(): any {
-  let j: number = 1;
+  lang = false;
+  if (lang) {
+    language = buttonsName.eng;
+  } else {
+    language = buttonsName.pl;
+  }
   utils.append.div("buttons", "buttons", "container", "");
-  for (let i = 0; i < buttonsId.length; i++) {
-    utils.append.div(buttonsId[i], "btn", "buttons", buttonsName[j][i]);
+  for (let i in buttonsId) {
+    utils.append.div(buttonsId[i], "btn", "buttons", language[i]);
   }
 }
 

@@ -239,14 +239,18 @@ let showInfo: any = {
     },
     stats: () => {
       let name: string[] = [
-        buttonsName[0][0], buttonsName[0][2], buttonsName[0][3], buttonsName[0][5]
+        buttonsName.pl[0], buttonsName.pl[2], buttonsName.pl[3], buttonsName.pl[5]
       ];
+      let id: string[] = [
+        buttonsId[0], buttonsId[2], buttonsId[3], buttonsId[5]
+      ]
       showInfo.reset();
       console.log("stats enabled")
       utils.append.div("container-stats", "container-stats", "container", "");
-      for (i = 0; i < name.length; i++) {
-        utils.append.div("stats-" + [i], "container-stats-items", "container-stats", "");
-        utils.append.header.h2("", "", "stats-" + [i], name[i])
+      for (let i in name) {
+        utils.append.div("stat-" + id[i], "container-stats-items", "container-stats", "");
+        utils.append.header.h2("", "", "stat-" + id[i], name[i])
+        utils.append.canvas("canvas-" + id[i], "stat-" + id[i])
       }
     }
   }

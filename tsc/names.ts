@@ -1,5 +1,5 @@
-const buttonsName: any[] = [
-  [
+const buttonsName: any = {
+  eng: [
     "Processor",
     "Mother Board",
     "Ram",
@@ -13,7 +13,7 @@ const buttonsName: any[] = [
     "Reset",
     "Save"
   ],
-  [
+  pl: [
     "Procesor",
     "Płyta Główna",
     "Pamięć",
@@ -23,11 +23,11 @@ const buttonsName: any[] = [
     "Użytkownicy",
     "SO",
     "Wszystko",
-    "Stats",
+    "Użycie",
     "Wyczyść",
     "Zapisz"
   ]
-];
+};
 
 const buttonsId: string[] = [
   "cpu",
