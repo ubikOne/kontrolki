@@ -1,5 +1,5 @@
 const si = require("systeminformation");
 
-si.networkStats((data) => {
-  console.log(data);
+si.cpu((data) => {
+  console.log(data.length);
 });

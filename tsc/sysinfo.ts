@@ -1,8 +1,8 @@
 const si = require("systeminformation");
 const os = require("os");
 
-let i: number;
-let j: number;
+let i: any;
+let j: any;
 
 function transfer(): any {
   si.networkStats((data) => {
@@ -12,10 +12,10 @@ function transfer(): any {
     this.rx = this.rx.toString();
     for (i = 0; i <= 3; i++) {
       if (this.rx.length < i) {
-        this.rx = "0" +this.rx;
+        this.rx = "0" + this.rx;
       }
       if (this.tx.length < i) {
-        this.tx = "0" +this.tx;
+        this.tx = "0" + this.tx;
       }
     }
     utils.show("tx", this.tx + " KB");
@@ -24,45 +24,55 @@ function transfer(): any {
   setTimeout(transfer, 1000)
 }
 function user(): any {
-  utils.append.div("base-info", "base-info", "container", "");
+  utils.append.div("base-info", "base-info", "body", "");
   utils.append.divSpan.span("username", "base-info-items", "base-info", "username: ", os.userInfo().username);
   utils.append.divSpan.span("hostname", "base-info-items", "base-info", "hostname: ", os.hostname());
-  utils.append.divSpan.spanId("rx","income", "base-info-items", "base-info", "in: ", "");
+  utils.append.divSpan.spanId("rx", "income", "base-info-items", "base-info", "in: ", "");
   utils.append.divSpan.spanId("tx", "outcome", "base-info-items", "base-info", "out: ", "");
 };
 
 class SystemInformation {
-  win: string = "Windows_NT;"
+  win: string = "Windows_NT"
   statArr: any[];
   constructor() {
     console.log("system information is enabled");
   }
   cpu(): any {
-    utils.append.div("", "container-column", "container", "cpu");
-    utils.append.div("container-column-cpu", "container-column", "container", "");
-    utils.append.div("show-cpu", "container-show", "container-column-cpu", "");
     si.cpu((data) => {
-      utils.append.divSpan.span("brand", "show", "show-cpu", "Brand: ", data.brand);
-      utils.append.divSpan.span("cores", "show", "show-cpu", "Cores No: ", data.cores);
-      utils.append.divSpan.span("manufacturer", "show", "show-cpu", "Manufacturer: ", data.manufacturer);
-      utils.append.divSpan.span("speed", "show", "show-cpu", "Cpu speed: ", data.speed);
+      utils.append.div("show-cpu-key", "container-show", "container", "");
+      utils.append.div("show-cpu-value", "container-show", "container", "");
+      utils.append.div("brand-key", "show", "show-cpu-key", "Brand: ");
+      utils.append.div("brand-value", "show", "show-cpu-value", data.brand);
+      utils.append.div("cores-key", "show", "show-cpu-key", "Cores No: ");
+      utils.append.div("cores-value", "show", "show-cpu-value", data.cores);
+      utils.append.div("manufacturer-key", "show", "show-cpu-key", "Manufacturer: ");
+      utils.append.div("manufacturer-value", "show", "show-cpu-value", data.manufacturer);
+      utils.append.div("speed-key", "show", "show-cpu-key", "CPU current speed: ");
+      utils.append.div("speed-value", "show", "show-cpu-value", data.speed);
       if (os.type() !== this.win) {
-        utils.append.divSpan.span("speedmax", "show", "show-cpu", "Cpu max speed: ", data.speedmax);
-        utils.append.divSpan.span("speedmin", "show", "show-cpu", "Cpu min speed: ", data.speedmin);
+        utils.append.div("speedmax-key", "show", "show-cpu-key", "Cpu max speed: ");
+        utils.append.div("speedmax-value", "show", "show-cpu-value", data.speedmax);
+        utils.append.div("speedmin-key", "show", "show-cpu-key", "Cpu min speed: ");
+        utils.append.div("speedmin-value", "show", "show-cpu-value", data.speedmin);
       }
-      utils.append.divSpan.span("vendor", "show", "show-cpu", "Vendor: ", data.vendor);
+      utils.append.div("vendor-key", "show", "show-cpu-key", "Vendor: ");
+      utils.append.div("vendor-value", "show", "show-cpu-value", data.vendor);
     });
   }
   system(): any {
-    utils.append.div("", "container-column", "container", "motherboard");
-    utils.append.div("container-column-system", "container-column", "container", "");
-    utils.append.div("show-system", "container-show", "container-column-system", "");
     si.baseboard((data) => {
-      utils.append.divSpan.span("manufacturer", "show", "show-system", "Manufacturer: ", data.manufacturer);
-      utils.append.divSpan.span("model", "show", "show-system", "Model: ", data.model);
-      utils.append.divSpan.span("serial", "show", "show-system", "S/N: ", data.serial);
-      utils.append.divSpan.span("uuid", "show", "show-system", "uuid: ", data.uuid);
-      utils.append.divSpan.span("version", "show", "show-system", "Version: ", data.version);
+      utils.append.div("show-system-key", "container-show", "container", "");
+      utils.append.div("show-system-value", "container-show", "container", "");
+      utils.append.div("manufacturer-key", "show", "show-system-key", "Manufacturer: ");
+      utils.append.div("manufacturer-value", "show", "show-system-value", data.manufacturer);
+      utils.append.div("model-key", "show", "show-system-key", "Model: ");
+      utils.append.div("model-value", "show", "show-system-value", data.model);
+      utils.append.div("serial-key", "show", "show-system-key", "S/N: ");
+      utils.append.div("serial-value", "show", "show-system-value", data.serial);
+      utils.append.div("uuid-key", "show", "show-system-key", "uuid: ");
+      utils.append.div("uuid-value", "show", "show-system-value", data.uuid);
+      utils.append.div("version-key", "show", "show-system-key", "Version: ");
+      utils.append.div("version-value", "show", "show-system-value", data.version);
     });
   }
   os(): any {
@@ -90,12 +100,12 @@ class SystemInformation {
     let mainArr: any[] = Object.values(os.networkInterfaces());
     let keyArr: string[] = Object.keys(os.networkInterfaces());
     utils.append.div("container-column-net", "container-column", "container", "");
-    for (i = 0; i < mainArr.length; i++) {
+    for (i in mainArr) {
       if (keyArr[i] !== "lo" && keyArr[i].length < 20) {
         utils.append.div("show-net-" + [i], "container-show", "container-column-net", "");
         utils.append.div(keyArr[i], "show", "show-net-" + [i], keyArr[i]);
       }
-      for (j = 0; j < mainArr[i].length; j++) {
+      for (j in mainArr[i]) {
         let macUpperCase: string = mainArr[i][j].mac;
         macUpperCase = macUpperCase.toUpperCase();
         if (typeof mainArr[i][j] === "object" && mainArr[i][j].address !== "127.0.0.1" && 5 < mainArr[i][j].address.length && mainArr[i][j].address.length <= 16) {
@@ -106,37 +116,50 @@ class SystemInformation {
     }
   }
   ram(): any {
-    utils.append.div("", "container-column", "container", "ram");
-    utils.append.div("container-column-ram", "container-column", "container", "");
     si.memLayout((data) => {
-        for (i = 0; i < data.length; i++) {
-          utils.append.div("show-ram-" + [i], "container-show", "container-column-ram", "");
-          utils.append.divSpan.span("size-" +[i], "show", "show-ram-" + [i], "Size: ", Math.ceil(data[i].size / Math.pow(2, 30)) + " GB");
-          utils.append.divSpan.span("bank-" +[i], "show", "show-ram-" + [i], "Bank No: ", data[i].bank);
-          utils.append.divSpan.span("type-" +[i], "show", "show-ram-" + [i], "Type: ", data[i].type);
-          if (data[i].clockSpeed < 10) {
-            utils.append.divSpan.span("clockSpeed" +[i], "show", "show-ram-" + [i], "Clock Speed: ", data[i].clockSpeed);
-          }
-          utils.append.divSpan.span("formFactor-" +[i], "show", "show-ram-" + [i], "Form Factor: ", data[i].formFactor);
-          utils.append.divSpan.span("manufacturer-" +[i], "show", "show-ram-" + [i], "Manufacturer: ", data[i].manufacturer);
-          utils.append.divSpan.span("serialNum-" +[i], "show", "show-ram-" + [i], "S/N: ", data[i].serialNum);
-          utils.append.divSpan.span("partNum-" +[i], "show", "show-ram-" + [i], "P/N: ", data[i].partNum);
+      for (i in data) {
+        utils.append.div("show-ram-key" + [i], "container-show", "container", "");
+        utils.append.div("show-ram-value" + [i], "container-show", "container", "");
+        utils.append.div("size-key" + [i], "show", "show-ram-key" + [i], "Size: ");
+        utils.append.div("size-value" + [i], "show", "show-ram-value" + [i], Math.ceil(data[i].size / Math.pow(2, 30)) + " GB");
+        utils.append.div("bank-key" + [i], "show", "show-ram-key" + [i], "Bank No: ");
+        utils.append.div("bank-value" + [i], "show", "show-ram-value" + [i], data[i].bank);
+        utils.append.div("type-key" + [i], "show", "show-ram-key" + [i], "Type: ");
+        utils.append.div("type-value" + [i], "show", "show-ram-value" + [i], data[i].type);
+        if (data[i].clockSpeed < 10) {
+          utils.append.div("clockSpeed-key" + [i], "show", "show-ram-key" + [i], "Clock speed: ");
+          utils.append.div("clockSpeed-value" + [i], "show", "show-ram-value" + [i], data[i].clockSpeed);
         }
+        utils.append.div("formFactor-key" + [i], "show", "show-ram-key" + [i], "Form Factor: ");
+        utils.append.div("formFactor-value" + [i], "show", "show-ram-value" + [i], data[i].formFactor);
+        utils.append.div("manufacturer-key" + [i], "show", "show-ram-key" + [i], "Manufacturer: ");
+        utils.append.div("manufacturer-value" + [i], "show", "show-ram-value" + [i], data[i].manufacturer);
+        utils.append.div("serialNum-key" + [i], "show", "show-ram-key" + [i], "S/n: ");
+        utils.append.div("serialNum-value" + [i], "show", "show-ram-value" + [i], data[i].serialNum);
+        utils.append.div("partNum-key" + [i], "show", "show-ram-key" + [i], "P/N: ");
+        utils.append.div("partNum-value" + [i], "show", "show-ram-value" + [i], data[i].partNum);
+      }
     });
   }
   drive(): any {
-    utils.append.div("", "container-column", "container", "drive");
-    utils.append.div("container-column-drive", "container-column", "container", "");
     si.diskLayout((data) => {
-      for (i = 0; i < data.length; i++) {
-        utils.append.div("show-drive-" + [i], "container-show", "container-column-drive", "");
-        utils.append.divSpan.span("size-" +[i], "show", "show-drive-" + [i], "Size: ", Math.ceil(data[i].size / Math.pow(2, 30)) + " GB");
-        utils.append.divSpan.span("name-" +[i], "show", "show-drive-" + [i], "Name: ", data[i].name);
-        utils.append.divSpan.span("type-" +[i], "show", "show-drive-" + [i], "Type: ", data[i].type);
-        utils.append.divSpan.span("interface-typ-" +[i], "show", "show-drive-" + [i], "Interface type: ", data[i].interfaceType);
-        utils.append.divSpan.span("firmware-revision-" +[i], "show", "show-drive-" + [i], "Firmware revision: ", data[i].firmwareRevision);
-        utils.append.divSpan.span("bytes-per-sector-" +[i], "show", "show-drive-" + [i], "Bytes Per Sector: ", data[i].bytesPerSector);
-        utils.append.divSpan.span("serialNum-" +[i], "show", "show-drive-" + [i], "S/N: ", data[i].serialNum);
+      for (i in data) {
+        utils.append.div("show-drive-key" + [i], "container-show", "container", "");
+        utils.append.div("show-drive-value" + [i], "container-show", "container", "");
+        utils.append.div("size-key" + [i], "show", "show-drive-key" + [i], "Size: ");
+        utils.append.div("size-value" + [i], "show", "show-drive-value" + [i], Math.ceil(data[i].size / Math.pow(2, 30)) + " GB");
+        utils.append.div("name-key" + [i], "show", "show-drive-key" + [i], "Name: ");
+        utils.append.div("name-value" + [i], "show", "show-drive-value" + [i], data[i].name);
+        utils.append.div("type-key" + [i], "show", "show-drive-key" + [i], "Type: ");
+        utils.append.div("type-value" + [i], "show", "show-drive-value" + [i], data[i].type);
+        utils.append.div("interface-type-key" + [i], "show", "show-drive-key" + [i], "Interface type: ");
+        utils.append.div("interface-type-value" + [i], "show", "show-drive-value" + [i], data[i].interfaceType);
+        utils.append.div("firmware-revision-key" + [i], "show", "show-drive-key" + [i], "Firmware revision: ");
+        utils.append.div("firmware-revision-value" + [i], "show", "show-drive-value" + [i], data[i].firmwareRevision);
+        utils.append.div("bytes-per-sector-key" + [i], "show", "show-drive-key" + [i], "Bytes Per Sector: ");
+        utils.append.div("bytes-per-sector-value" + [i], "show", "show-drive-value" + [i], data[i].bytesPerSector);
+        utils.append.div("serial-num-key" + [i], "show", "show-drive-key" + [i], "S/N: ");
+        utils.append.div("serial-num-value" + [i], "show", "show-drive-value" + [i], data[i].serialNum);
       }
     });
   }
@@ -146,25 +169,25 @@ class SystemInformation {
     utils.append.div("", "container-column", "container", "displays");
     utils.append.div("container-column-displays", "container-column", "container", "");
     si.graphics((data) => {
-      for (i = 0; i < data.controllers.length; i++) {
+      for (i in data.controllers) {
         utils.append.div("show-gpu-controllers-" + [i], "container-show", "container-column-gpu", "");
-        utils.append.divSpan.span("bus-" +[i], "show", "show-gpu-controllers-" + [i], "Bus: ", data.controllers[i].bus);
-        utils.append.divSpan.span("model-" +[i], "show", "show-gpu-controllers-" + [i], "Model: ", data.controllers[i].model);
-        utils.append.divSpan.span("vendor-" +[i], "show", "show-gpu-controllers-" + [i], "Vendor: ", data.controllers[i].vendor);
-        utils.append.divSpan.span("vRam-" +[i], "show", "show-gpu-controllers-" + [i], "vRam: ", data.controllers[i].vRam);
+        utils.append.divSpan.span("bus-" + [i], "show", "show-gpu-controllers-" + [i], "Bus: ", data.controllers[i].bus);
+        utils.append.divSpan.span("model-" + [i], "show", "show-gpu-controllers-" + [i], "Model: ", data.controllers[i].model);
+        utils.append.divSpan.span("vendor-" + [i], "show", "show-gpu-controllers-" + [i], "Vendor: ", data.controllers[i].vendor);
+        utils.append.divSpan.span("vRam-" + [i], "show", "show-gpu-controllers-" + [i], "vRam: ", data.controllers[i].vRam);
         if (data.controllers.length % 2 == 1) {
           utils.append.div("show-gpu-controllers" + [i + 1], "container-show", "container-column-gpu", "")
         }
       }
-      for (i = 0; i < data.displays.length; i++) {
+      for (i in data.displays) {
         utils.append.div("show-gpu-displays-" + [i], "container-show", "container-column-displays", "");
         if (data.displays[i].connetion != 0) {
-          utils.append.divSpan.span("connetion-" +[i], "show", "show-gpu-displays-" + [i], "Connetion: ", data.displays[i].connetion);
+          utils.append.divSpan.span("connetion-" + [i], "show", "show-gpu-displays-" + [i], "Connetion: ", data.displays[i].connetion);
         }
-        utils.append.divSpan.span("model-" +[i], "show", "show-gpu-displays-" + [i], "Model: ", data.displays[i].model);
-        utils.append.divSpan.span("pixel-depth-" +[i], "show", "show-gpu-displays-" + [i], "Pixel depth: ", data.displays[i].pixeldepth);
-        utils.append.divSpan.span("resolution-x-" +[i], "show", "show-gpu-displays-" + [i], "Pixel width: ", data.displays[i].resolutionx);
-        utils.append.divSpan.span("resolution-y-" +[i], "show", "show-gpu-displays-" + [i], "Pixel height: ", data.displays[i].resolutiony);
+        utils.append.divSpan.span("model-" + [i], "show", "show-gpu-displays-" + [i], "Model: ", data.displays[i].model);
+        utils.append.divSpan.span("pixel-depth-" + [i], "show", "show-gpu-displays-" + [i], "Pixel depth: ", data.displays[i].pixeldepth);
+        utils.append.divSpan.span("resolution-x-" + [i], "show", "show-gpu-displays-" + [i], "Pixel width: ", data.displays[i].resolutionx);
+        utils.append.divSpan.span("resolution-y-" + [i], "show", "show-gpu-displays-" + [i], "Pixel height: ", data.displays[i].resolutiony);
       }
     });
   }
@@ -172,13 +195,13 @@ class SystemInformation {
     utils.append.div("", "container-column", "container", "users");
     utils.append.div("container-column-users", "container-column", "container", "");
     si.users((data) => {
-      for (i = 0; i < data.length; i++) {
+      for (i in data) {
         utils.append.div("show-users-" + [i], "container-show", "container-column-users", "");
-        utils.append.divSpan.span("user-" +[i], "show", "show-users-" + [i], "User: ", data[i].user);
-        utils.append.divSpan.span("date-" +[i], "show", "show-users-" + [i], "Loign date: ", data[i].date);
-        utils.append.divSpan.span("time-" +[i], "show", "show-users-" + [i], "Login time: ", data[i].time);
+        utils.append.divSpan.span("user-" + [i], "show", "show-users-" + [i], "User: ", data[i].user);
+        utils.append.divSpan.span("date-" + [i], "show", "show-users-" + [i], "Loign date: ", data[i].date);
+        utils.append.divSpan.span("time-" + [i], "show", "show-users-" + [i], "Login time: ", data[i].time);
         if (data[i].tty.length !== 0) {
-          utils.append.divSpan.span("tty-" +[i], "show", "show-users-" + [i], "tty: ", data[i].tty);
+          utils.append.divSpan.span("tty-" + [i], "show", "show-users-" + [i], "tty: ", data[i].tty);
         }
       }
     });
@@ -187,11 +210,11 @@ class SystemInformation {
 
 let showInfo: any = {
   reset: () => {
-  utils.reset(".show");
-  utils.reset(".containerShon");
-  utils.reset(".container-column");
-  utils.reset(".container-stats");
-  utils.reset(".container-stats-items");
+    utils.reset(".show");
+    utils.reset(".containerShon");
+    utils.reset(".container-column");
+    utils.reset(".container-stats");
+    utils.reset(".container-stats-items");
   },
   show: {
     cpu: () => {
@@ -230,9 +253,9 @@ let showInfo: any = {
       showInfo.reset();
       sysInfo.cpu();
       setTimeout(sysInfo.system, 50);
-      setTimeout(sysInfo.os, 100);
+      setTimeout(sysInfo.ram, 100);
       setTimeout(sysInfo.net, 150);
-      setTimeout(sysInfo.ram, 200);
+      setTimeout(sysInfo.os, 200);
       setTimeout(sysInfo.drive, 250);
       setTimeout(sysInfo.user, 300);
       setTimeout(sysInfo.gpu, 350);
@@ -247,7 +270,7 @@ let showInfo: any = {
       showInfo.reset();
       console.log("stats enabled")
       utils.append.div("container-stats", "container-stats", "container", "");
-      for (let i in name) {
+      for (i in name) {
         utils.append.div("stat-" + id[i], "container-stats-items", "container-stats", "");
         utils.append.header.h2("", "", "stat-" + id[i], name[i])
         utils.append.canvas("canvas-" + id[i], "stat-" + id[i])

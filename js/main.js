@@ -1,11 +1,12 @@
 window.onload = function () {
-    user();
-    transfer();
-    buttons();
-    time();
-    clock();
-    valueShow();
-    transfer();
+    // user();
+    // transfer();
+    // buttons();
+    // time();
+    // clock();
+    // valueShow();
+    // transfer();
+    showInfo.show.all();
 };
 var lang = true;
 var language;
@@ -17,13 +18,13 @@ function buttons() {
     else {
         language = buttonsName.pl;
     }
-    utils.append.div("buttons", "buttons", "container", "");
+    utils.append.div("buttons", "buttons", "body", "");
     for (var i_1 in buttonsId) {
         utils.append.div(buttonsId[i_1], "btn", "buttons", language[i_1]);
     }
 }
 function time() {
-    utils.append.div("timer", "time", "container", "");
+    utils.append.div("timer", "time", "body", "");
     utils.append.div("date", "in_time", "timer", "");
     utils.append.div("time", "in_time", "timer", "");
     utils.append.div("day", "in_time", "timer", "");
