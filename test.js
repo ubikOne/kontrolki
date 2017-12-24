@@ -1,5 +1,4 @@
 const si = require("systeminformation");
+const os = require("os");
 
-si.cpu((data) => {
-  console.log(data.length);
-});
+console.log(os.networkInterfaces())

@@ -39,10 +39,34 @@ h1, h2, h3, h4, h5, h6 {
   margin: 5px 0 0 5px
 }
 
-body .container {
+.container {
+  padding: 10px;
   display: grid;
   grid-template-columns: repeat(2, 1fr 2fr);
-  grid-row-gap: 1em;
+  grid-auto-rows: minmax(150px, auto);
+  grid-gap: 1em;
+  justify-items: strech;
+  align-items: stretch;
+}
+
+.container-show-key,
+.container-show-value {
+  padding: 5px;
+  transition: all 0.5s 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* .container-show-key:hover, */
+.container-show-value:hover {
+  box-shadow: 7px 7px 8px 1px rgba(0,0,0,0.23);
+}
+
+.container-show-value {
+  background: #fff;
+}
+
+.container-show-key {
+  background: #eee;
+  text-align: right;
 }
 
 body .base-info {

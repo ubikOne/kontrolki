@@ -38,78 +38,84 @@ var SystemInformation = /** @class */ (function () {
     SystemInformation.prototype.cpu = function () {
         var _this = this;
         si.cpu(function (data) {
-            utils.append.div("show-cpu-key", "container-show", "container", "");
-            utils.append.div("show-cpu-value", "container-show", "container", "");
-            utils.append.div("brand-key", "show", "show-cpu-key", "Brand: ");
-            utils.append.div("brand-value", "show", "show-cpu-value", data.brand);
-            utils.append.div("cores-key", "show", "show-cpu-key", "Cores No: ");
-            utils.append.div("cores-value", "show", "show-cpu-value", data.cores);
-            utils.append.div("manufacturer-key", "show", "show-cpu-key", "Manufacturer: ");
-            utils.append.div("manufacturer-value", "show", "show-cpu-value", data.manufacturer);
-            utils.append.div("speed-key", "show", "show-cpu-key", "CPU current speed: ");
-            utils.append.div("speed-value", "show", "show-cpu-value", data.speed);
+            utils.append.div("show-cpu-key", "container-show-key", "container", "");
+            utils.append.div("show-cpu-value", "container-show-value", "container", "");
+            utils.append.div("brand-key", "show-key", "show-cpu-key", "Brand: ");
+            utils.append.div("brand-value", "show-value", "show-cpu-value", data.brand);
+            utils.append.div("cores-key", "show-key", "show-cpu-key", "Cores No: ");
+            utils.append.div("cores-value", "show-value", "show-cpu-value", data.cores);
+            utils.append.div("manufacturer-key", "show-key", "show-cpu-key", "Manufacturer: ");
+            utils.append.div("manufacturer-value", "show-value", "show-cpu-value", data.manufacturer);
+            utils.append.div("speed-key", "show-key", "show-cpu-key", "CPU current speed: ");
+            utils.append.div("speed-value", "show-value", "show-cpu-value", data.speed);
             if (os.type() !== _this.win) {
-                utils.append.div("speedmax-key", "show", "show-cpu-key", "Cpu max speed: ");
-                utils.append.div("speedmax-value", "show", "show-cpu-value", data.speedmax);
-                utils.append.div("speedmin-key", "show", "show-cpu-key", "Cpu min speed: ");
-                utils.append.div("speedmin-value", "show", "show-cpu-value", data.speedmin);
+                utils.append.div("speedmax-key", "show-key", "show-cpu-key", "Cpu max speed: ");
+                utils.append.div("speedmax-value", "show-value", "show-cpu-value", data.speedmax);
+                utils.append.div("speedmin-key", "show-key", "show-cpu-key", "Cpu min speed: ");
+                utils.append.div("speedmin-value", "show-value", "show-cpu-value", data.speedmin);
             }
-            utils.append.div("vendor-key", "show", "show-cpu-key", "Vendor: ");
-            utils.append.div("vendor-value", "show", "show-cpu-value", data.vendor);
+            utils.append.div("vendor-key", "show-key", "show-cpu-key", "Vendor: ");
+            utils.append.div("vendor-value", "show-value", "show-cpu-value", data.vendor);
         });
     };
     SystemInformation.prototype.system = function () {
         si.baseboard(function (data) {
-            utils.append.div("show-system-key", "container-show", "container", "");
-            utils.append.div("show-system-value", "container-show", "container", "");
-            utils.append.div("manufacturer-key", "show", "show-system-key", "Manufacturer: ");
-            utils.append.div("manufacturer-value", "show", "show-system-value", data.manufacturer);
-            utils.append.div("model-key", "show", "show-system-key", "Model: ");
-            utils.append.div("model-value", "show", "show-system-value", data.model);
-            utils.append.div("serial-key", "show", "show-system-key", "S/N: ");
-            utils.append.div("serial-value", "show", "show-system-value", data.serial);
-            utils.append.div("uuid-key", "show", "show-system-key", "uuid: ");
-            utils.append.div("uuid-value", "show", "show-system-value", data.uuid);
-            utils.append.div("version-key", "show", "show-system-key", "Version: ");
-            utils.append.div("version-value", "show", "show-system-value", data.version);
+            utils.append.div("show-system-key", "container-show-key", "container", "");
+            utils.append.div("show-system-value", "container-show-value", "container", "");
+            utils.append.div("manufacturer-key", "show-key", "show-system-key", "Manufacturer: ");
+            utils.append.div("manufacturer-value", "show-value", "show-system-value", data.manufacturer);
+            utils.append.div("model-key", "show-key", "show-system-key", "Model: ");
+            utils.append.div("model-value", "show-value", "show-system-value", data.model);
+            utils.append.div("serial-key", "show-key", "show-system-key", "S/N: ");
+            utils.append.div("serial-value", "show-value", "show-system-value", data.serial);
+            utils.append.div("uuid-key", "show-key", "show-system-key", "uuid: ");
+            utils.append.div("uuid-value", "show-value", "show-system-value", data.uuid);
+            utils.append.div("version-key", "show-key", "show-system-key", "Version: ");
+            utils.append.div("version-value", "show-value", "show-system-value", data.version);
         });
     };
     SystemInformation.prototype.os = function () {
-        utils.append.div("", "container-column", "container", "os");
-        utils.append.div("container-column-os", "container-column", "container", "");
-        utils.append.div("show-os", "container-show", "container-column-os", "");
         si.osInfo(function (data) {
-            utils.append.divSpan.span("platform", "show", "show-os", "Platform: ", data.platform);
+            utils.append.div("show-os-key", "container-show-key", "container", "");
+            utils.append.div("show-os-value", "container-show-value", "container", "");
+            utils.append.div("platform-key", "show-key", "show-os-key", "Platform: ");
+            utils.append.div("platform-value", "show-value", "show-os-value", data.platform);
             if (data.distro.length > 25) {
                 data.distro = data.distro.slice(0, 25);
-                utils.append.divSpan.span("distro", "show", "show-os", "Distro: ", data.distro);
+                utils.append.div("distro-key", "show-key", "show-os-key", "Distro: ");
+                utils.append.div("distro-value", "show-value", "show-os-value", data.distro);
             }
             if (data.codename.length > 25) {
                 data.codename = data.codename.slice(0, 25);
                 if (data.distro !== data.codename) {
-                    utils.append.divSpan.span("codename", "show", "show-os", "Codename: ", data.codename);
+                    utils.append.div("codename-key", "show-key", "show-os-key", "Codename: ");
+                    utils.append.div("codename-value", "show-value", "show-os-value", data.codename);
                 }
             }
-            utils.append.divSpan.span("kernel", "show", "show-os", "Kernel: ", data.kernel);
-            utils.append.divSpan.span("version", "show", "show-os", "Version: ", data.version);
+            utils.append.div("kernel-key", "show-key", "show-os-key", "Kernel: ");
+            utils.append.div("kernel-value", "show-value", "show-os-value", data.kernel);
+            utils.append.div("version-key", "show-key", "show-os-key", "Version: ");
+            utils.append.div("version-value", "show-value", "show-os-value", data.version);
         });
     };
     SystemInformation.prototype.net = function () {
-        utils.append.div("", "container-column", "container", "network");
         var mainArr = Object.values(os.networkInterfaces());
         var keyArr = Object.keys(os.networkInterfaces());
-        utils.append.div("container-column-net", "container-column", "container", "");
-        for (i in mainArr) {
+        for (i = 1; i < mainArr.length; i++) {
+            utils.append.div("show-net-key" + [i], "container-show-key", "container", "");
+            utils.append.div("show-net-value" + [i], "container-show-value", "container", "");
             if (keyArr[i] !== "lo" && keyArr[i].length < 20) {
-                utils.append.div("show-net-" + [i], "container-show", "container-column-net", "");
-                utils.append.div(keyArr[i], "show", "show-net-" + [i], keyArr[i]);
+                utils.append.div(keyArr[i] + "-key", "show-key", "show-net-key" + [i], "Network name: ");
+                utils.append.div(keyArr[i] + "-value", "show-value", "show-net-value" + [i], keyArr[i]);
             }
             for (j in mainArr[i]) {
                 var macUpperCase = mainArr[i][j].mac;
                 macUpperCase = macUpperCase.toUpperCase();
                 if (typeof mainArr[i][j] === "object" && mainArr[i][j].address !== "127.0.0.1" && 5 < mainArr[i][j].address.length && mainArr[i][j].address.length <= 16) {
-                    utils.append.divSpan.span(keyArr[i] + "_ip", "show", "show-net-" + [i], "IP: ", mainArr[i][j].address);
-                    utils.append.divSpan.span(keyArr[i] + "_mac", "show", "show-net-" + [i], "MAC: ", macUpperCase);
+                    utils.append.div("ip-key-" + keyArr[i], "show-key", "show-net-key" + [i], "IP: ");
+                    utils.append.div("ip-value-" + keyArr[i], "show-value", "show-net-value" + [i], mainArr[i][j].address);
+                    utils.append.div("mac-key-" + keyArr[i], "show-key", "show-net-key" + [i], "MAC: ");
+                    utils.append.div("mac-value-" + keyArr[i], "show-value", "show-net-value" + [i], macUpperCase);
                 }
             }
         }
@@ -117,72 +123,75 @@ var SystemInformation = /** @class */ (function () {
     SystemInformation.prototype.ram = function () {
         si.memLayout(function (data) {
             for (i in data) {
-                utils.append.div("show-ram-key" + [i], "container-show", "container", "");
-                utils.append.div("show-ram-value" + [i], "container-show", "container", "");
-                utils.append.div("size-key" + [i], "show", "show-ram-key" + [i], "Size: ");
-                utils.append.div("size-value" + [i], "show", "show-ram-value" + [i], Math.ceil(data[i].size / Math.pow(2, 30)) + " GB");
-                utils.append.div("bank-key" + [i], "show", "show-ram-key" + [i], "Bank No: ");
-                utils.append.div("bank-value" + [i], "show", "show-ram-value" + [i], data[i].bank);
-                utils.append.div("type-key" + [i], "show", "show-ram-key" + [i], "Type: ");
-                utils.append.div("type-value" + [i], "show", "show-ram-value" + [i], data[i].type);
+                utils.append.div("show-ram-key" + [i], "container-show-key", "container", "");
+                utils.append.div("show-ram-value" + [i], "container-show-value", "container", "");
+                utils.append.div("size-key" + [i], "show-key", "show-ram-key" + [i], "Size: ");
+                utils.append.div("size-value" + [i], "show-value", "show-ram-value" + [i], Math.ceil(data[i].size / Math.pow(2, 30)) + " GB");
+                utils.append.div("bank-key" + [i], "show-key", "show-ram-key" + [i], "Bank No: ");
+                utils.append.div("bank-value" + [i], "show-value", "show-ram-value" + [i], data[i].bank);
+                utils.append.div("type-key" + [i], "show-key", "show-ram-key" + [i], "Type: ");
+                utils.append.div("type-value" + [i], "show-value", "show-ram-value" + [i], data[i].type);
                 if (data[i].clockSpeed < 10) {
-                    utils.append.div("clockSpeed-key" + [i], "show", "show-ram-key" + [i], "Clock speed: ");
-                    utils.append.div("clockSpeed-value" + [i], "show", "show-ram-value" + [i], data[i].clockSpeed);
+                    utils.append.div("clockSpeed-key" + [i], "show-key", "show-ram-key" + [i], "Clock speed: ");
+                    utils.append.div("clockSpeed-value" + [i], "show-value", "show-ram-value" + [i], data[i].clockSpeed);
                 }
-                utils.append.div("formFactor-key" + [i], "show", "show-ram-key" + [i], "Form Factor: ");
-                utils.append.div("formFactor-value" + [i], "show", "show-ram-value" + [i], data[i].formFactor);
-                utils.append.div("manufacturer-key" + [i], "show", "show-ram-key" + [i], "Manufacturer: ");
-                utils.append.div("manufacturer-value" + [i], "show", "show-ram-value" + [i], data[i].manufacturer);
-                utils.append.div("serialNum-key" + [i], "show", "show-ram-key" + [i], "S/n: ");
-                utils.append.div("serialNum-value" + [i], "show", "show-ram-value" + [i], data[i].serialNum);
-                utils.append.div("partNum-key" + [i], "show", "show-ram-key" + [i], "P/N: ");
-                utils.append.div("partNum-value" + [i], "show", "show-ram-value" + [i], data[i].partNum);
+                utils.append.div("formFactor-key" + [i], "show-key", "show-ram-key" + [i], "Form Factor: ");
+                utils.append.div("formFactor-value" + [i], "show-value", "show-ram-value" + [i], data[i].formFactor);
+                utils.append.div("manufacturer-key" + [i], "show-key", "show-ram-key" + [i], "Manufacturer: ");
+                utils.append.div("manufacturer-value" + [i], "show-value", "show-ram-value" + [i], data[i].manufacturer);
+                utils.append.div("serialNum-key" + [i], "show-key", "show-ram-key" + [i], "S/n: ");
+                utils.append.div("serialNum-value" + [i], "show-value", "show-ram-value" + [i], data[i].serialNum);
+                utils.append.div("partNum-key" + [i], "show-key", "show-ram-key" + [i], "P/N: ");
+                utils.append.div("partNum-value" + [i], "show-value", "show-ram-value" + [i], data[i].partNum);
             }
         });
     };
     SystemInformation.prototype.drive = function () {
         si.diskLayout(function (data) {
             for (i in data) {
-                utils.append.div("show-drive-key" + [i], "container-show", "container", "");
-                utils.append.div("show-drive-value" + [i], "container-show", "container", "");
-                utils.append.div("size-key" + [i], "show", "show-drive-key" + [i], "Size: ");
-                utils.append.div("size-value" + [i], "show", "show-drive-value" + [i], Math.ceil(data[i].size / Math.pow(2, 30)) + " GB");
-                utils.append.div("name-key" + [i], "show", "show-drive-key" + [i], "Name: ");
-                utils.append.div("name-value" + [i], "show", "show-drive-value" + [i], data[i].name);
-                utils.append.div("type-key" + [i], "show", "show-drive-key" + [i], "Type: ");
-                utils.append.div("type-value" + [i], "show", "show-drive-value" + [i], data[i].type);
-                utils.append.div("interface-type-key" + [i], "show", "show-drive-key" + [i], "Interface type: ");
-                utils.append.div("interface-type-value" + [i], "show", "show-drive-value" + [i], data[i].interfaceType);
-                utils.append.div("firmware-revision-key" + [i], "show", "show-drive-key" + [i], "Firmware revision: ");
-                utils.append.div("firmware-revision-value" + [i], "show", "show-drive-value" + [i], data[i].firmwareRevision);
-                utils.append.div("bytes-per-sector-key" + [i], "show", "show-drive-key" + [i], "Bytes Per Sector: ");
-                utils.append.div("bytes-per-sector-value" + [i], "show", "show-drive-value" + [i], data[i].bytesPerSector);
-                utils.append.div("serial-num-key" + [i], "show", "show-drive-key" + [i], "S/N: ");
-                utils.append.div("serial-num-value" + [i], "show", "show-drive-value" + [i], data[i].serialNum);
+                utils.append.div("show-drive-key" + [i], "container-show-key", "container", "");
+                utils.append.div("show-drive-value" + [i], "container-show-value", "container", "");
+                utils.append.div("size-key" + [i], "show-key", "show-drive-key" + [i], "Size: ");
+                utils.append.div("size-value" + [i], "show-value", "show-drive-value" + [i], Math.ceil(data[i].size / Math.pow(2, 30)) + " GB");
+                utils.append.div("name-key" + [i], "show-key", "show-drive-key" + [i], "Name: ");
+                utils.append.div("name-value" + [i], "show-value", "show-drive-value" + [i], data[i].name);
+                utils.append.div("type-key" + [i], "show-key", "show-drive-key" + [i], "Type: ");
+                utils.append.div("type-value" + [i], "show-value", "show-drive-value" + [i], data[i].type);
+                utils.append.div("interface-type-key" + [i], "show-key", "show-drive-key" + [i], "Interface type: ");
+                utils.append.div("interface-type-value" + [i], "show-value", "show-drive-value" + [i], data[i].interfaceType);
+                utils.append.div("firmware-revision-key" + [i], "show-key", "show-drive-key" + [i], "Firmware revision: ");
+                utils.append.div("firmware-revision-value" + [i], "show-value", "show-drive-value" + [i], data[i].firmwareRevision);
+                utils.append.div("bytes-per-sector-key" + [i], "show-key", "show-drive-key" + [i], "Bytes Per Sector: ");
+                utils.append.div("bytes-per-sector-value" + [i], "show-value", "show-drive-value" + [i], data[i].bytesPerSector);
+                utils.append.div("serial-num-key" + [i], "show-key", "show-drive-key" + [i], "S/N: ");
+                utils.append.div("serial-num-value" + [i], "show-value", "show-drive-value" + [i], data[i].serialNum);
             }
         });
     };
     SystemInformation.prototype.gpu = function () {
-        utils.append.div("", "container-column", "container", "gpu");
-        utils.append.div("container-column-gpu", "container-column", "container", "");
-        utils.append.div("", "container-column", "container", "displays");
-        utils.append.div("container-column-displays", "container-column", "container", "");
         si.graphics(function (data) {
             for (i in data.controllers) {
-                utils.append.div("show-gpu-controllers-" + [i], "container-show", "container-column-gpu", "");
-                utils.append.divSpan.span("bus-" + [i], "show", "show-gpu-controllers-" + [i], "Bus: ", data.controllers[i].bus);
-                utils.append.divSpan.span("model-" + [i], "show", "show-gpu-controllers-" + [i], "Model: ", data.controllers[i].model);
-                utils.append.divSpan.span("vendor-" + [i], "show", "show-gpu-controllers-" + [i], "Vendor: ", data.controllers[i].vendor);
-                utils.append.divSpan.span("vRam-" + [i], "show", "show-gpu-controllers-" + [i], "vRam: ", data.controllers[i].vRam);
-                if (data.controllers.length % 2 == 1) {
-                    utils.append.div("show-gpu-controllers" + [i + 1], "container-show", "container-column-gpu", "");
-                }
+                utils.append.div("show-gpu-controllers-key" + [i], "container-show-key", "container", "");
+                utils.append.div("show-gpu-controllers-value" + [i], "container-show-value", "container", "");
+                utils.append.div("bus-key" + [i], "show-key", "show-gpu-controllers-key" + [i], "bus: ");
+                utils.append.div("bus-value" + [i], "show-value", "show-gpu-controllers-value" + [i], data.controllers[i].bus);
+                utils.append.div("model-key" + [i], "show-key", "show-gpu-controllers-key" + [i], "model: ");
+                utils.append.div("model-value" + [i], "show-value", "show-gpu-controllers-value" + [i], data.controllers[i].model);
+                utils.append.div("vendor-key" + [i], "show-key", "show-gpu-controllers-key" + [i], "vendor: ");
+                utils.append.div("vendor-value" + [i], "show-value", "show-gpu-controllers-value" + [i], data.controllers[i].vendor);
+                utils.append.div("vRam-key" + [i], "show-key", "show-gpu-controllers-key" + [i], "vRam: ");
+                utils.append.div("vRam-value" + [i], "show-value", "show-gpu-controllers-value" + [i], data.controllers[i].vRam);
+                // if (data.controllers.length % 2 == 1) {
+                //   utils.append.div("show-gpu-controllers" + [i + 1], "container-show", "container-column-gpu", "")
+                // }
             }
             for (i in data.displays) {
+                utils.append.div("show-gpu-displays-key" + [i], "container-show-key", "container", "");
+                utils.append.div("show-gpu-displays-value" + [i], "container-show-value", "container", "");
                 utils.append.div("show-gpu-displays-" + [i], "container-show", "container-column-displays", "");
-                if (data.displays[i].connetion != 0) {
-                    utils.append.divSpan.span("connetion-" + [i], "show", "show-gpu-displays-" + [i], "Connetion: ", data.displays[i].connetion);
-                }
+                // if (data.displays[i].connetion != 0) {
+                //   utils.append.divSpan.span("connetion-" + [i], "show", "show-gpu-displays-" + [i], "Connetion: ", data.displays[i].connetion);
+                // }
                 utils.append.divSpan.span("model-" + [i], "show", "show-gpu-displays-" + [i], "Model: ", data.displays[i].model);
                 utils.append.divSpan.span("pixel-depth-" + [i], "show", "show-gpu-displays-" + [i], "Pixel depth: ", data.displays[i].pixeldepth);
                 utils.append.divSpan.span("resolution-x-" + [i], "show", "show-gpu-displays-" + [i], "Pixel width: ", data.displays[i].resolutionx);
@@ -191,16 +200,19 @@ var SystemInformation = /** @class */ (function () {
         });
     };
     SystemInformation.prototype.user = function () {
-        utils.append.div("", "container-column", "container", "users");
-        utils.append.div("container-column-users", "container-column", "container", "");
         si.users(function (data) {
             for (i in data) {
-                utils.append.div("show-users-" + [i], "container-show", "container-column-users", "");
-                utils.append.divSpan.span("user-" + [i], "show", "show-users-" + [i], "User: ", data[i].user);
-                utils.append.divSpan.span("date-" + [i], "show", "show-users-" + [i], "Loign date: ", data[i].date);
-                utils.append.divSpan.span("time-" + [i], "show", "show-users-" + [i], "Login time: ", data[i].time);
+                utils.append.div("show-users-key" + [i], "container-show-key", "container", "");
+                utils.append.div("show-users-value" + [i], "container-show-value", "container", "");
+                utils.append.div("user-key" + [i], "show-key", "show-users-key" + [i], "User: ");
+                utils.append.div("user-value" + [i], "show-value", "show-users-value" + [i], data[i].user);
+                utils.append.div("date-key" + [i], "show-key", "show-users-key" + [i], "Loign date: ");
+                utils.append.div("date-value" + [i], "show-value", "show-users-value" + [i], data[i].date);
+                utils.append.div("time-key" + [i], "show-key", "show-users-key" + [i], "Login time: ");
+                utils.append.div("time-value" + [i], "show-value", "show-users-value" + [i], data[i].time);
                 if (data[i].tty.length !== 0) {
-                    utils.append.divSpan.span("tty-" + [i], "show", "show-users-" + [i], "tty: ", data[i].tty);
+                    utils.append.div("tty-key" + [i], "show-key", "show-users-key" + [i], "tty: ");
+                    utils.append.div("tty-value" + [i], "show-value", "show-users-value" + [i], data[i].tty);
                 }
             }
         });
