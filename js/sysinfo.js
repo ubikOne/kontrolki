@@ -33,6 +33,7 @@ function user() {
 var SystemInformation = /** @class */ (function () {
     function SystemInformation() {
         this.win = "Windows_NT";
+        this.linux = "linux";
         console.log("system information is enabled");
     }
     SystemInformation.prototype.cpu = function () {
@@ -173,29 +174,42 @@ var SystemInformation = /** @class */ (function () {
             for (i in data.controllers) {
                 utils.append.div("show-gpu-controllers-key" + [i], "container-show-key", "container", "");
                 utils.append.div("show-gpu-controllers-value" + [i], "container-show-value", "container", "");
-                utils.append.div("bus-key" + [i], "show-key", "show-gpu-controllers-key" + [i], "bus: ");
-                utils.append.div("bus-value" + [i], "show-value", "show-gpu-controllers-value" + [i], data.controllers[i].bus);
                 utils.append.div("model-key" + [i], "show-key", "show-gpu-controllers-key" + [i], "model: ");
                 utils.append.div("model-value" + [i], "show-value", "show-gpu-controllers-value" + [i], data.controllers[i].model);
                 utils.append.div("vendor-key" + [i], "show-key", "show-gpu-controllers-key" + [i], "vendor: ");
                 utils.append.div("vendor-value" + [i], "show-value", "show-gpu-controllers-value" + [i], data.controllers[i].vendor);
+                if (data.controllers[i].bus.length != 0) {
+                    utils.append.div("bus-key" + [i], "show-key", "show-gpu-controllers-key" + [i], "bus: ");
+                    utils.append.div("bus-value" + [i], "show-value", "show-gpu-controllers-value" + [i], data.controllers[i].bus);
+                }
                 utils.append.div("vRam-key" + [i], "show-key", "show-gpu-controllers-key" + [i], "vRam: ");
-                utils.append.div("vRam-value" + [i], "show-value", "show-gpu-controllers-value" + [i], data.controllers[i].vRam);
-                // if (data.controllers.length % 2 == 1) {
-                //   utils.append.div("show-gpu-controllers" + [i + 1], "container-show", "container-column-gpu", "")
-                // }
+                utils.append.div("vRam-value" + [i], "show-value", "show-gpu-controllers-value" + [i], data.controllers[i].vram);
+                utils.append.div("vRam-key" + [i], "show-key", "show-gpu-controllers-key" + [i], "Dynamic vRam: ");
+                utils.append.div("vRam-value" + [i], "show-value", "show-gpu-controllers-value" + [i], data.controllers[i].vramDynamic);
             }
             for (i in data.displays) {
                 utils.append.div("show-gpu-displays-key" + [i], "container-show-key", "container", "");
                 utils.append.div("show-gpu-displays-value" + [i], "container-show-value", "container", "");
-                utils.append.div("show-gpu-displays-" + [i], "container-show", "container-column-displays", "");
-                // if (data.displays[i].connetion != 0) {
-                //   utils.append.divSpan.span("connetion-" + [i], "show", "show-gpu-displays-" + [i], "Connetion: ", data.displays[i].connetion);
-                // }
-                utils.append.divSpan.span("model-" + [i], "show", "show-gpu-displays-" + [i], "Model: ", data.displays[i].model);
-                utils.append.divSpan.span("pixel-depth-" + [i], "show", "show-gpu-displays-" + [i], "Pixel depth: ", data.displays[i].pixeldepth);
-                utils.append.divSpan.span("resolution-x-" + [i], "show", "show-gpu-displays-" + [i], "Pixel width: ", data.displays[i].resolutionx);
-                utils.append.divSpan.span("resolution-y-" + [i], "show", "show-gpu-displays-" + [i], "Pixel height: ", data.displays[i].resolutiony);
+                if (data.displays[i].main === true) {
+                    utils.append.div("main-key" + [i], "show-key", "show-gpu-displays-key" + [i], "main: ");
+                    utils.append.div("main-value" + [i], "show-value", "show-gpu-displays-value" + [i], data.displays[i].main);
+                }
+                if (data.displays[i].builtin === true) {
+                    utils.append.div("builtin-key" + [i], "show-key", "show-gpu-displays-key" + [i], "builtin: ");
+                    utils.append.div("builtin-value" + [i], "show-value", "show-gpu-displays-value" + [i], data.displays[i].builtin);
+                }
+                utils.append.div("connection-key" + [i], "show-key", "show-gpu-displays-key" + [i], "connection: ");
+                utils.append.div("connection-value" + [i], "show-value", "show-gpu-displays-value" + [i], data.displays[i].connection);
+                if (data.displays[i].model.length != 0) {
+                    utils.append.div("model-key" + [i], "show-key", "show-gpu-displays-key" + [i], "model: ");
+                    utils.append.div("model-value" + [i], "show-value", "show-gpu-displays-value" + [i], data.displays[i].model);
+                }
+                utils.append.div("pixel-depth--key" + [i], "show-key", "show-gpu-displays-key" + [i], "Pixel depth: ");
+                utils.append.div("pixel-depth--value" + [i], "show-value", "show-gpu-displays-value" + [i], data.displays[i].pixeldepth);
+                utils.append.div("connetion-key" + [i], "show-key", "show-gpu-displays-key" + [i], "Pixel width: ");
+                utils.append.div("connetion-value" + [i], "show-value", "show-gpu-displays-value" + [i], data.displays[i].resolutionx);
+                utils.append.div("resolution-x-" + [i], "show-key", "show-gpu-displays-key" + [i], "Pixel height: ");
+                utils.append.div("resolution-y-" + [i], "show-value", "show-gpu-displays-value" + [i], data.displays[i].resolutiony);
             }
         });
     };

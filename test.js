@@ -1,4 +1,4 @@
 const si = require("systeminformation");
 const os = require("os");
 
-console.log(os.networkInterfaces())
+console.log(os.platform())
