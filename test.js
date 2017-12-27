@@ -1,5 +1,4 @@
 const si = require("systeminformation");
+const os = require("os");
 
-si.networkStats((data) => {
-  console.log(data);
-});
+console.log(os.type())

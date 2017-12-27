@@ -13,10 +13,10 @@ class Utils {
     this.removeElements(document.querySelectorAll(elms));
   }
   getIt = {
-    idTag (id: string): any {
+    idTag(id: string): any {
       document.getElementById(id);
     },
-    classTag (id: string): any {
+    classTag(id: string): any {
       document.getElementsByClassName(id);
     }
   }
@@ -27,7 +27,7 @@ class Utils {
     click(id: string, set: any) {
       document.getElementById(id).addEventListener("click", set);
     }
-  } 
+  }
   append = {
     div(idvalue: string, stylevalue: string, target: string, text: any): any {
       this.childNode = document.createElement("div");
@@ -72,11 +72,11 @@ class Utils {
       },
     },
     divSpan: {
-      span(idvalue: string, stylevalue: string, target: string, textDiv: any, textId: any):any {
+      span(idvalue: string, stylevalue: string, target: string, textDiv: any, textId: any): any {
         utils.append.div(idvalue, stylevalue, target, textDiv);
         utils.append.span("", idvalue, textId);
       },
-      spanId(idvalueSpan: string, idvalueDiv: string, stylevalue: string, target: string, textDiv: any, textId: any):any {
+      spanId(idvalueSpan: string, idvalueDiv: string, stylevalue: string, target: string, textDiv: any, textId: any): any {
         utils.append.div(idvalueDiv, stylevalue, target, textDiv);
         utils.append.span(idvalueSpan, idvalueDiv, textId);
       }
