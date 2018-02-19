@@ -1,5 +1,7 @@
 # kontrolki
 
+## project temporarily suspended.
+
 
 ## simple application to check system information for windows, linux , osx/macos build with [node.js][nodejs-url] and [systeminformation][lib-url] libary
 
