@@ -17,8 +17,8 @@
   },
   "homepage": "https://github.com/ubikOne/kontrolki#readme",
   "devDependencies": {
-    "electron": "^1.7.9",
-    "systeminformation": "^3.33.8",
+    "electron": "^1.8.4",
+    "systeminformation": "^3.38.0",
     "tsc": "^1.20150623.0"
   }
 }
